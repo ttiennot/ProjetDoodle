@@ -1,8 +1,8 @@
 <?php
-$ipserver = "192.168.65.112";
+$ipserver = "localhost";
 $nomBase = "doodle";
 $loginPrivilege = "root";
-$passPrivilege = "root";
+$passPrivilege = "";
 // On initialise l'objet PDO.
 $GLOBALS["pdo"] = new PDO('mysql:host=' . $ipserver . ';dbname=' . $nomBase . '', $loginPrivilege, $passPrivilege);
 
