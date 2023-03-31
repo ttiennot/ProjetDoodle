@@ -24,14 +24,14 @@ include 'bdd.php';
     <div id="welcome">
         <?php
         //si mec connecté alors on recup toutes ses infos en bdd
-        if(isset($_SESSION['nom_utilisateur'])){
+        if (isset($_SESSION['nom_utilisateur'])) {
             $connectPseudo = $_SESSION['nom_utilisateur'];
-            $requete = "SELECT `id` FROM user WHERE `nom` = '".$connectPseudo."';";
+            $requete = "SELECT `id` FROM user WHERE `nom` = '" . $connectPseudo . "';";
             $result = $GLOBALS["pdo"]->query($requete);
-            if($result !=false) {
+            if ($result != false) {
                 echo 'la requete fonctionne';
             }
-            if($result->rowCount() > 0) {
+            if ($result->rowCount() > 0) {
                 echo 'enregistré en bdd';
                 //faire un foreach pour entrer le fetch dans la variable 
                 $UserId = $result->fetch();
@@ -45,18 +45,17 @@ include 'bdd.php';
                 $plage = 'matin';
                 $color = 'HH12FF';
                 $u1->CreateUser($user, $plage, $color);
-                $requete = "SELECT `id` FROM user WHERE `nom` = '".$user."';";
+                $requete = "SELECT `id` FROM user WHERE `nom` = '" . $user . "';";
                 $resultId = $GLOBALS["pdo"]->query($requete);
-                if($resultId->rowCount() > 0) {
+                if ($resultId->rowCount() > 0) {
                     $UserId = $resultId->fetch();
                     $_SESSION['id'] = $UserId;
                     echo $_SESSION['id'];
                 }
-                
             }
         }
         //si mec connecté et qu'il a son id dans la session on recup son id pour recup ses infos
-        if (isset($_SESSION['nom_utilisateur']) && isset($_SESSION['id']))  {
+        if (isset($_SESSION['nom_utilisateur']) && isset($_SESSION['id'])) {
 
             $id = $_SESSION['id'];
             $u1->getUserById($id);
