@@ -26,16 +26,14 @@ include 'bdd.php';
         //si mec connecté alors on recup toutes ses infos en bdd
         if(isset($_SESSION['nom_utilisateur'])){
             $connectPseudo = $_SESSION['nom_utilisateur'];
-            echo 'a';
             $requete = "SELECT `id` FROM user WHERE `nom` = '".$connectPseudo."';";
-            echo 'a';
             $result = $GLOBALS["pdo"]->query($requete);
-            echo 'a';
             if($result !=false) {
-                echo 'ca marche';
+                echo 'la requete fonctionne';
             }
             if($result->rowCount() > 0) {
                 echo 'enregistré en bdd';
+                //faire un foreach pour entrer le fetch dans la variable 
                 $UserId = $result->fetch();
                 $_SESSION['id'] = $UserId;
             }
