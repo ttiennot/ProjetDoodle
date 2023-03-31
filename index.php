@@ -23,6 +23,7 @@ include 'bdd.php';
 
     <div id="welcome">
         <?php
+        //si mec connecté alors on recup toutes ses infos en bdd
         if(isset($_SESSION['nom_utilisateur'])){
             $connectPseudo = $_SESSION['nom_utilisateur'];
             echo 'a';
@@ -38,6 +39,7 @@ include 'bdd.php';
                 $UserId = $result->fetch();
                 $_SESSION['id'] = $UserId;
             }
+            //si mec pas connecté on crée un user en bdd
             else {
                 echo 'pas enregistré en bdd';
                 $u1 = new User(NULL, NULL, NULL, NULL);
@@ -55,7 +57,7 @@ include 'bdd.php';
                 
             }
         }
-
+        //si mec connecté et qu'il a son id dans la session on recup son id pour recup ses infos
         if (isset($_SESSION['nom_utilisateur']) && isset($_SESSION['id']))  {
 
             $id = $_SESSION['id'];
