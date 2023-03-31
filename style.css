@@ -1,0 +1,46 @@
+table {
+  border-collapse: collapse;
+  width: 80%;
+  height: 50%;
+  margin: auto;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 50px;
+  border: 1px solid black;
+}
+
+th {
+  background-color: lightgrey;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+#form {
+  width: 10%;
+  height: 10%;
+  margin: auto;
+  background-color: grey;
+}
+
+#welcome {
+  color: purple;
+  padding-left: 45%;
+  font-size: 25px;
+  font-weight: 2px;
+}
+
+#formSubmit {
+  width: 10%;
+  height: 10%;
+  margin: auto;
+}
+
+.vert{
+  background-color: rgba(59, 138, 108, 0.822);
+}
