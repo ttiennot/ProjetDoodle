@@ -7,10 +7,9 @@
     $GLOBALS["pdo"] = new PDO('mysql:host=' . $ipserver . ';dbname=' . $nomBase . '', $loginPrivilege, $passPrivilege);
 
    
-    //créer un calendrier
-    if(isset($_GET["donne"])){
-        $retour[2] = $_GET["donne"];
-        $req = "update test set nom='".$_GET["donne"]."' where id = 1";
+    if(isset($_POST["soumettre"])){
+        $retour[2] = $_POST["soumettre"];
+        $req = "INSERT INTO `creneau`(`matin`, `midi`, `aprem`, `soir`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]')";
         $GLOBALS["pdo"]->query($req);
         //enregistrer en bdd la donnée
     }
