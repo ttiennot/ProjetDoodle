@@ -20,6 +20,24 @@ for (var i = 0; i < casesCalendrier.length; i++) {
         }
     });
 }
+function recupCreneau() {
+    var selected = RecupCases();
+    
+    for(var j = 0; j < selected.length; j++) {
+        if(selected[j] <=  7 ) {
+            console.log('creneau selectionné : matin');
+        }
+        else if(selected[j]> 7 && selected[j] <= 14 ) {
+            console.log('creneau selectionné : midi');
+        }
+        else if(selected[j] > 14 && selected[j] <= 21 ) {
+            console.log('creneau selectionné : apres midi');
+        }
+        else if(selected[j] > 21) {
+            console.log('creneau selectionné : soir');
+        }
+    }
+}
 
 function RecupCases(){
 
@@ -32,27 +50,7 @@ function RecupCases(){
         result[i] = casesCalendrier2[i].id;
         };
 
-    alert(result);
+    //alert(result);
     return result;
 }
-/*
-    // Sélectionnez le bouton "Créer calendrier"
-    const createButton = document.getElementById('sub');
-function creerCal() {
-    // Attachez un gestionnaire d'événements de clic au bouton
-    createButton.addEventListener('click', () => {
-    // Générer un hash unique à partir du timestamp et d'une chaîne aléatoire
-    const hash = Math.floor(Date.now() / 1000).toString(16) + Math.random().toString(16).substr(2, 8);
-    // Créer l'URL unique avec le hash
-    const url = `192.168.65.112/calendrier/#${hash}`;
-    // Créer le calendrier avec la bibliothèque de calendrier
-    const calendar = new FullCalendar.Calendar(calendarEl, {
-        // Configurer les paramètres du calendrier, en incluant le hash unique
-        // ...
-    });
-    // Afficher le calendrier sur la page
-    calendar.render();
-    });
-}
-*/
 

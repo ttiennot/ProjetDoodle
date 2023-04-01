@@ -29,10 +29,10 @@ include 'bdd.php';
             $requete = "SELECT `id` FROM user WHERE `nom` = '" . $connectPseudo . "';";
             $result = $GLOBALS["pdo"]->query($requete);
             if ($result != false) {
-                echo 'la requete fonctionne';
+                echo 'la requete fonctionne ';
             }
             if ($result->rowCount() > 0) {
-                echo 'enregistré en bdd';
+                echo 'enregistré en bdd ';
                 $UserId = $result->fetch();
                 $_SESSION['id'] = $UserId[0];
             }
@@ -57,7 +57,7 @@ include 'bdd.php';
         if (isset($_SESSION['nom_utilisateur']) && isset($_SESSION['id'])) {
             $id = $_SESSION['id'];
             //$u1->getUserById($id);
-            echo "bonjour"  . $_SESSION["nom_utilisateur"] . " voici votre id :" . $_SESSION['id'];
+            echo "bonjour "  . $_SESSION["nom_utilisateur"] . " voici votre id :" . $_SESSION['id'];
         }
         ?>
     </div>
@@ -118,8 +118,7 @@ include 'bdd.php';
     </table>
     <br>
 
-    <input type="submit" name="soumettre" value="soumettre" onclick="RecupCases()">
-
+    <input type="submit" name="soumettre" value="soumettre" onclick="recupCreneau();">
 
 </body>
 <script>
