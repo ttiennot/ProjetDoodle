@@ -3,7 +3,54 @@ session_start();
 include 'formulaire.php';
 include 'classe/user.php';
 include 'bdd.php';
+
+function createUserIfNeeded()
+{
+    global $pdo;
+    if (isset($_SESSION['nom_utilisateur'])) {
+        $connectPseudo = $_SESSION['nom_utilisateur'];
+        $requete = "SELECT `id` FROM user WHERE `nom` = '$connectPseudo'";
+        $result = $GLOBALS["pdo"]->query($requete);
+
+        if ($result != false) {
+            echo 'la requete fonctionne';
+        }
+
+        if ($result) {
+            echo 'enregistré en bdd';
+            $UserId = $result;
+            $_SESSION['id'] = $UserId;
+        } else {
+            echo 'pas enregistré en bdd';
+            $u1 = new User(NULL, NULL, NULL, NULL);
+            $user = $_SESSION['nom_utilisateur'];
+            $plage = 'matin';
+            $color = 'HH12FF';
+            $u1->CreateUser($user, $plage, $color);
+            $requete = "SELECT `id` FROM user WHERE `nom` = '$user'";
+            $resultId = $GLOBALS["pdo"]->query($requete);
+            if ($resultId) {
+                $UserId = $resultId[0];
+                $_SESSION['id'] = $UserId;
+                echo implode(", ", $_SESSION['id']);
+            }
+        }
+    }
+}
+
+function getUserIfNeeded()
+{
+    if (isset($_SESSION['nom_utilisateur']) && isset($_SESSION['id'])) {
+        $id = $_SESSION['id'];
+        $u1 = new User(NULL, NULL, NULL, NULL);
+        $u1->getUserById($id);
+        echo 'bonjour ' . $_SESSION['nom_utilisateur'] . 'voici votre id :' . $_SESSION['id'];
+    }
+}
+
+createUserIfNeeded();
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -17,48 +64,12 @@ include 'bdd.php';
     <div id="form">
         <?php
         formConnect();
-
         ?>
     </div>
 
     <div id="welcome">
         <?php
-        //si mec connecté alors on recup toutes ses infos en bdd
-        if (isset($_SESSION['nom_utilisateur'])) {
-            $connectPseudo = $_SESSION['nom_utilisateur'];
-            $requete = "SELECT `id` FROM user WHERE `nom` = '" . $connectPseudo . "';";
-            $result = $GLOBALS["pdo"]->query($requete);
-            if ($result != false) {
-                echo 'la requete fonctionne ';
-            }
-            if ($result->rowCount() > 0) {
-                echo 'enregistré en bdd ';
-                $UserId = $result->fetch();
-                $_SESSION['id'] = $UserId[0];
-            }
-            //si mec pas connecté on crée un user en bdd
-            else {
-                echo 'pas enregistré en bdd';
-                $user = $_SESSION['nom_utilisateur'];
-                $plage = 'matin';
-                $color = 'HH12FF';
-                $u1 = new User(NULL, $user, $plage, $color);
-
-                $u1->CreateUser($user, $plage, $color);
-                $requete = "SELECT `id` FROM user WHERE `nom` = '" . $user . "';";
-                $resultId = $GLOBALS["pdo"]->query($requete);
-                if ($resultId->rowCount() > 0) {
-                    $UserId = $resultId->fetch();
-                    $_SESSION['id'] = $UserId[0];
-                }
-            }
-        }
-        //si mec connecté et qu'il a son id dans la session on recup son id pour recup ses infos
-        if (isset($_SESSION['nom_utilisateur']) && isset($_SESSION['id'])) {
-            $id = $_SESSION['id'];
-            //$u1->getUserById($id);
-            echo "bonjour "  . $_SESSION["nom_utilisateur"] . " voici votre id :" . $_SESSION['id'];
-        }
+        getUserIfNeeded();
         ?>
     </div>
 
@@ -118,7 +129,8 @@ include 'bdd.php';
     </table>
     <br>
 
-    <input type="submit" name="soumettre" value="soumettre" onclick="recupCreneau();">
+    <input type="submit" name="soumettre" value="soumettre" onclick="RecupCases()">
+
 
 </body>
 <script>

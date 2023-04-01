@@ -20,8 +20,26 @@ for (var i = 0; i < casesCalendrier.length; i++) {
         }
     });
 }
+function recupCreneau() {
+    var selected = RecupCases();
 
-function RecupCases(){
+    for (var j = 0; j < selected.length; j++) {
+        if (selected[j] <= 7) {
+            console.log('creneau selectionné : matin');
+        }
+        else if (selected[j] > 7 && selected[j] <= 14) {
+            console.log('creneau selectionné : midi');
+        }
+        else if (selected[j] > 14 && selected[j] <= 21) {
+            console.log('creneau selectionné : apres midi');
+        }
+        else if (selected[j] > 21) {
+            console.log('creneau selectionné : soir');
+        }
+    }
+}
+
+function RecupCases() {
 
     var casesCalendrier2 = document.getElementsByClassName("vert");
     // Boucle pour vérifier chaque case du calendrier
@@ -30,8 +48,9 @@ function RecupCases(){
         // Ajout d'un écouteur d'événement "click" sur chaque case
         casesCalendrier2[i].id;
         result[i] = casesCalendrier2[i].id;
-        };
+    };
 
-    alert(result);
+    //alert(result);
     return result;
 }
+

@@ -42,6 +42,5 @@ class User {
             $this->color_ = $tab['color'];
         }
     }
-
 }
 ?>
