@@ -33,13 +33,8 @@ include 'bdd.php';
             }
             if ($result->rowCount() > 0) {
                 echo 'enregistré en bdd';
-                $UserId = array();
-                foreach ($UserId as $key => $value) {
-                    $UserId[$key] = $result->fetch()[0];
-                    $_SESSION['id'] = $UserId[$key];
-                    echo $_SESSION['id'];
-                }
-                
+                $UserId = $result->fetch();
+                $_SESSION['id'] = $UserId[0];
             }
             //si mec pas connecté on crée un user en bdd
             else {
@@ -54,17 +49,15 @@ include 'bdd.php';
                 $resultId = $GLOBALS["pdo"]->query($requete);
                 if ($resultId->rowCount() > 0) {
                     $UserId = $resultId->fetch();
-                    $_SESSION['id'] = $UserId;
-                    echo implode(", ", $_SESSION['id']);
+                    $_SESSION['id'] = $UserId[0];
                 }
             }
         }
         //si mec connecté et qu'il a son id dans la session on recup son id pour recup ses infos
         if (isset($_SESSION['nom_utilisateur']) && isset($_SESSION['id'])) {
-
             $id = $_SESSION['id'];
-            $u1->getUserById($id);
-            echo 'bonjour ' . $_SESSION['nom_utilisateur'] . 'voici votre id :' . $_SESSION['id'];
+            //$u1->getUserById($id);
+            echo "bonjour"  . $_SESSION["nom_utilisateur"] . " voici votre id :" . $_SESSION['id'];
         }
         ?>
     </div>
