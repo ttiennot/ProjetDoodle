@@ -1,27 +1,37 @@
 <?php
-function formConnect()
+include 'functions.php';
+function formDeco()
 {
     if (isset($_POST["disconnect"])) {
         session_unset();
         session_destroy();
-        header("Location: " . $_SERVER['PHP_SELF']);
+    } elseif (isset($_SESSION['nom_utilisateur'])) {
+        echo 'bonjour ' . $_SESSION['nom_utilisateur'];
+        //ecrire ici l'id etc
+        $user = $_SESSION['nom_utilisateur'];
+?>
+        <form action="" method="post">
+            <input type="submit" name="disconnect" value="déconnexion">
+        </form>
+    <?php
     }
+}
 
+
+function formConnect()
+{
     if (isset($_POST['submit']) && !isset($_SESSION['nom_utilisateur'])) {
         $_SESSION['nom_utilisateur'] = $_POST['nom'];
-?>
+    ?>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <input type="submit" name="disconnect" value="déconnexion">
         </form>
     <?php
 
     } elseif (isset($_SESSION['nom_utilisateur'])) {
-        echo 'bonjour ' . $_SESSION['nom_utilisateur'];
+        echo 'connecté en tant que : ' . $_SESSION['nom_utilisateur'];
         $user = $_SESSION['nom_utilisateur'];
     ?>
-
-        <?php
-        ?>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <input type="submit" name="disconnect" value="déconnexion">
         </form>
@@ -29,7 +39,7 @@ function formConnect()
 
     } else {
     ?>
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <form id="connect" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <label>saisir votre nom :</label>
             <input type="text" name="nom" required>
             <br><br>
@@ -39,3 +49,16 @@ function formConnect()
     }
 }
 ?>
+
+<?php
+function formcreateDelete()
+{
+?>
+    <form id="creerCal" action="" method="post">
+        <input type="submit" name="creerCal" value="creer calendrier" onclick="generateHash();">
+        <input type="submit" name="rejCal" value="rejoindre calendrier">
+    </form>
+<?php
+}
+?>
+<script src="main.js"></script>

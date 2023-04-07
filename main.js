@@ -20,8 +20,26 @@ for (var i = 0; i < casesCalendrier.length; i++) {
         }
     });
 }
+function recupCreneau() {
+    var selected = RecupCases();
 
-function RecupCases(){
+    for (var j = 0; j < selected.length; j++) {
+        if (selected[j] <= 7) {
+            console.log('creneau selectionné : matin');
+        }
+        else if (selected[j] > 7 && selected[j] <= 14) {
+            console.log('creneau selectionné : midi');
+        }
+        else if (selected[j] > 14 && selected[j] <= 21) {
+            console.log('creneau selectionné : apres midi');
+        }
+        else if (selected[j] > 21) {
+            console.log('creneau selectionné : soir');
+        }
+    }
+}
+
+function RecupCases() {
 
     var casesCalendrier2 = document.getElementsByClassName("vert");
     // Boucle pour vérifier chaque case du calendrier
@@ -30,8 +48,25 @@ function RecupCases(){
         // Ajout d'un écouteur d'événement "click" sur chaque case
         casesCalendrier2[i].id;
         result[i] = casesCalendrier2[i].id;
-        };
+    };
 
     alert(result);
     return result;
 }
+
+function generateHash() {
+    //l'alerte fonctionne mais pas le location.replace
+    const timestamp = new Date().getTime();
+    const randomChars = Math.random().toString(36).substring(2, 5);
+    const hash = `${timestamp}${randomChars}`;
+    const baseUrl = window.location.href.split('/').slice(0, -1).join('/');
+    const fileName = window.location.href.split('/').pop();
+    const newUrl = `${baseUrl}/${fileName}/${hash}`;
+    console.log(newUrl); // Affiche l'URL dans la console
+    alert(newUrl);
+    location.replace(newUrl); // Redirige vers la nouvelle URL en utilisant location.replace()
+}
+
+
+
+
