@@ -1,0 +1,132 @@
+table {
+  border-collapse: collapse;
+  border: solid;
+  width: 80%;
+  height: 50%;
+  margin: auto;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 50px;
+  border: 1px solid black;
+}
+
+th {
+  background-color: rgb(46, 204, 113);
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+#welcome {
+  color: purple;
+  padding-left: 45%;
+  font-size: 25px;
+  font-weight: 2px;
+}
+
+#formSubmit {
+  width: 10%;
+  height: 10%;
+  margin: auto;
+}
+
+.vert{
+  background-color: darkorchid;
+}
+
+input[value="creer calendrier"] {
+  background-color: darkorchid;
+  font-size: 20px;
+  color: black;
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  top: 25%;
+  right: 40%;
+  border-radius: 50px;
+  border: 2px solid black;
+}
+
+input[value="rejoindre calendrier"] {
+  background-color: darkorchid;
+  font-size: 20px;
+  color: black;
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  top: 40%;
+  right: 40%;
+  border-radius: 50px;
+  border: 2px solid black;
+}
+
+form[id="connect"] {
+  padding-top: 30px;
+  background-color: darkorchid;;
+  width: 500px;
+  height: 150px;
+  margin: auto;
+  border-radius: 50px;
+  border: 2px solid black;
+}
+
+label {
+  font-size: 25px;
+  padding-left: 60px;
+}
+
+input[value="Envoyer"] {
+  background-color: yellow;
+  margin-left: 45%;
+  width: 200px;
+  height: 60px;
+  border-radius: 50px;
+  border: 2px solid black;
+}
+
+input[value="déconnexion"] {
+  background-color: darkorchid;
+  font-size: 20px;
+  color: black;
+  width: 210px;
+  height: 70px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50px;
+  border: 2px solid black;
+}
+
+input[value="soumettre"] {
+  background-color: darkorchid;
+  font-size: 20px;
+  color: black;
+  width: 210px;
+  height: 70px;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  border-radius: 50px;
+  border: 2px solid black;
+}
+
+.cartman {
+  padding-top:0px;
+  height: 700px;
+}
+
+.cr7 {
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  height: 600px;
+}
+
+#creneau {
+  background-color: rgb(46, 204, 113);
+}
