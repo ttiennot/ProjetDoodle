@@ -61,4 +61,18 @@ function formcreateDelete()
 <?php
 
 }
+
+function numSemaine()
+{
+?>
+    <form id="numSemaine" method="post">
+        <label>Numéro de semaine : (de 1 à 52)
+            <input  id="txtNumSemaine" name="numSemaine" autocomplete="...">
+        </label>
+        <input type="submit" name="submit" value="Envoyer :)">
+        
+    </form>
+
+<?php
+}
 ?>

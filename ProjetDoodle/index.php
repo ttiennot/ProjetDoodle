@@ -59,18 +59,22 @@ include 'functions.php';
         echo "bonjour "  . $_SESSION["nom_utilisateur"] . " voici votre id :" . $_SESSION['id'];
     }
 
-
     if (!isset($_SESSION["nom_utilisateur"])) {
         formConnect();
     }
-    if (isset($_SESSION['nom_utilisateur']) && !isset($_POST["creerCal"])) {
+    if (isset($_SESSION['nom_utilisateur']) && !isset($_POST["creerCal"]) && !isset($_POST['numSemaine'])) {
         formcreateDelete();
+        formDeco();
     }
-    if (isset($_SESSION['nom_utilisateur']) && isset($_POST["creerCal"])) {
+    if(isset($_POST['creerCal'])) {
+        numSemaine();
+        formDeco();
+    }
+    if (isset($_SESSION['nom_utilisateur']) && isset($_POST['numSemaine'])) {
         formDeco();
         //$url = coucou();
         //echo $url;
-
+    
     ?>
         <script>
             const timestamp = new Date().getTime();
@@ -88,7 +92,7 @@ include 'functions.php';
             var pseudo = <?php echo json_encode($_SESSION['nom_utilisateur']); ?>;
         </script>
         <h1>Calendrier hebdomadaire</h1>
-        <h2>Semaine n°</h2>
+        <h2>Semaine n° <?php echo $_POST['numSemaine'];?></h2>
         <table>
             <tr>
                 <th>Pepper'Mint Planning</th>

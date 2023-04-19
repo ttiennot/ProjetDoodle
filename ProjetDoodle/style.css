@@ -130,3 +130,27 @@ input[value="soumettre"] {
 #creneau {
   background-color: rgb(46, 204, 113);
 }
+
+form[id="numSemaine"] {
+  padding-top: 30px;
+  background-color: darkorchid;;
+  width: 500px;
+  height: 150px;
+  margin: auto;
+  border-radius: 50px;
+  border: 2px solid black;
+}
+
+#txtNumSemaine {
+  margin-left: 160px;
+}
+
+input[value="Envoyer :)"] {
+  background-color: yellow;
+  margin-left: 150px;
+  margin-top: 10px;
+  width: 200px;
+  height: 60px;
+  border-radius: 50px;
+  border: 2px solid black;
+}
