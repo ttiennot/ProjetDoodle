@@ -1,9 +1,12 @@
 <?php
 include 'bdd.php';
+include 'index.php';
 
-    if(isset($_POST['soumettre'])) {
-        echo "je suis gay";
-    }else{
-        echo"je suis pas gay";
-    }
+$numSemaine = $_POST['numSemaine'];
+$pseudo = $_SESSION['nom_utilisateur'];
+$id = $_SESSIOn['id'];
+//$numeroCalendrier = val cal dans l'url; (trouver comment la recup)
+if(isset($_POST['soumettre'])) {
+    //faire les requetes en BDD
+}
 ?>

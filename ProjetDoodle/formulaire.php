@@ -5,9 +5,6 @@ function formDeco()
         session_unset();
         session_destroy();
     } elseif (isset($_SESSION['nom_utilisateur'])) {
-        echo 'bonjour ' . $_SESSION['nom_utilisateur'];
-        //ecrire ici l'id etc
-        $user = $_SESSION['nom_utilisateur'];
 ?>
         <form action="" method="post">
             <input type="submit" name="disconnect" value="déconnexion">
@@ -19,6 +16,15 @@ function formDeco()
 
 function formConnect()
 {
+    ?>
+    <script>
+        let url = window.location.origin + window.location.pathname;
+
+        window.history.pushState({
+            path: url
+        }, '', url);
+    </script>
+    <?php
     if (isset($_POST['submit']) && !isset($_SESSION['nom_utilisateur'])) {
         $_SESSION['nom_utilisateur'] = $_POST['nom'];
     ?>
